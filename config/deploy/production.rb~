@@ -1,7 +1,8 @@
-set :user, "git"
+set :user, "deployer"
+set :home, "git"
 set :branch, "capistrano"
-set :application, "paanouplb"
-set :deploy_to, "/home/#{user}/#{application}"
+set :application, "gitlab"
+set :deploy_to, "/home/#{home}/#{application}"
 
 set :rails_env, "production"
 
