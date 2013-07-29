@@ -11,7 +11,7 @@ end
 gem "rails", "3.2.13"
 
 # Supported DBs
-gem "mysql2", group: :mysql
+#gem "mysql2", group: :mysql
 gem "pg", group: :postgres
 
 # Auth
