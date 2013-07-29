@@ -16,7 +16,7 @@ namespace :deploy do
 
   task :setup_config, roles: :app do
     run "mkdir -p #{shared_path}/config"
-    put File.read("config/database.yml.postgresql"), "#{shared_path}/config/database.yml"
+    put File.read("config/database.yml.mysql"), "#{shared_path}/config/database.yml"
     put File.read("config/gitlab.yml.example"), "#{shared_path}/config/gitlab.yml"
     puts "Now edit the config files in #{shared_path}."
   end 
