@@ -1,4 +1,4 @@
-set :user, "deployer"
+set :user, "git"
 set :home, "git"
 set :branch, "capistrano"
 set :application, "gitlab"
