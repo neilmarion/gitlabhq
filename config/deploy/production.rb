@@ -15,7 +15,7 @@ namespace :deploy do
   end 
 
   task :setup_config, roles: :app do
-    run "mkdir -p #{shared_path}/config", :shell => "sudo -u git -H"
+    run "mkdir -p #{shared_path}/config", :as => "sudo -u git -H"
     put File.read("config/database.yml.mysql"), "#{shared_path}/config/database.yml"
     put File.read("config/gitlab.yml.example"), "#{shared_path}/config/gitlab.yml"
     puts "Now edit the config files in #{shared_path}."
@@ -23,9 +23,9 @@ namespace :deploy do
   after "deploy:setup", "deploy:setup_config"
 
   task :symlink_config, roles: :app do
-    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml", :shell => "sudo -u git -H"
-    run "ln -nfs #{shared_path}/config/gitlab.yml #{release_path}/config/gitlab.yml", :shell => "sudo -u git -H"
-    run "ln -nfs #{shared_path}/config/puma.rb.example #{release_path}/config/puma.rb", :shell => "sudo -u git -H"
+    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml", :as => "sudo -u git -H"
+    run "ln -nfs #{shared_path}/config/gitlab.yml #{release_path}/config/gitlab.yml", :as => "sudo -u git -H"
+    run "ln -nfs #{shared_path}/config/puma.rb.example #{release_path}/config/puma.rb", :as => "sudo -u git -H"
   end 
   after "deploy:finalize_update", "deploy:symlink_config"
 

@@ -23,9 +23,9 @@ namespace :deploy do
   after "deploy:setup", "deploy:setup_config"
 
   task :symlink_config, roles: :app do
-    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
-    run "ln -nfs #{shared_path}/config/gitlab.yml #{release_path}/config/gitlab.yml"
-    run "ln -nfs #{shared_path}/config/puma.rb.example #{release_path}/config/puma.rb"
+    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml", :shell => "sudo -u git -H"
+    run "ln -nfs #{shared_path}/config/gitlab.yml #{release_path}/config/gitlab.yml", :shell => "sudo -u git -H"
+    run "ln -nfs #{shared_path}/config/puma.rb.example #{release_path}/config/puma.rb", :shell => "sudo -u git -H"
   end 
   after "deploy:finalize_update", "deploy:symlink_config"
 
